@@ -48,7 +48,7 @@ void Sorts<T>::ordenaBurbuja(std::vector<T> &v)
 	for (int i=v.size()-1;i>0;i--) {
 		for (int j=0;j<i;j++) 
 		{
-			if (v[j] > v[j + 1]) 
+			if (v[j]>v[j + 1]) 
 			{
 				swap(v, j, j + 1);
 			}
@@ -145,10 +145,10 @@ void Sorts<T>::copyArray(std::vector<T> &A, std::vector<T> &B, int low, int high
 
 /* Implementacion del algoritmo ordenaMerge */
 template <class T>
-void Sorts<T>::ordenaMerge(std::vector<T> &source) 
+void Sorts<T>::ordenaMerge(std::vector<T> &v) 
 {
-	std::vector<T> tmp(source.size());
-	unirSplit(source, tmp, 0, source.size() - 1);
+	std::vector<T> tmp(v.size());
+	unirSplit(v, tmp, 0, v.size() - 1);
 }
 
 /* Implementacion del algoritmo busqSecuencial */
