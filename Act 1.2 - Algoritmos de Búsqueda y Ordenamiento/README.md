@@ -10,3 +10,5 @@ ordenaMerge: El algoritmo merge sort, resulta en una complejidad O(n log(n)), es
 busqSecuencial: Este algoritmo de busqueda es de orden O(n), el por que es debido a que en el momento de de realizar la iteración solo recorre una vez el arreglo para comprobar si el valor de uno de los indices es igual al valor que estamos buscando.
 
 busqBinaria: Debido a que como en este algoritmo se reduce el numero de pasos, se encuentra que su orden es de tipo O(log(n)), debido a que al tomarlo de forma comparativa reduce los pasos para encontrar nuestro valor en el arreglo.
+
+PD: CHEQUE SU MAIN PROFE POR FAVOR.
