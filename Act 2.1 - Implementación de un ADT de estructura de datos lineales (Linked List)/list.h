@@ -89,7 +89,7 @@ void List<T>::add(T val) throw (OutOfMemory)
 	puntero = head;
 	while (puntero->next != 0)
 	{
-		puntero = puntero -> next;
+		puntero = puntero->next;
 	}
 
 	new_Link->next = 0;
@@ -160,7 +160,7 @@ T List<T>::remove(int indice) throw (IndexOutOfBounds)
 	{
 		if (indice == i)
 		{
-			q = puntero -> next;
+			q = puntero->next;
 			aux = q->value;
 			puntero->next = q->next;
 			delete q;
