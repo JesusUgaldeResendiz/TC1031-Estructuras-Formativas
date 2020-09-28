@@ -15,7 +15,8 @@
 template <class T> class List;
 
 template <class T>
-class Link {
+class Link 
+{
 	private:
 		Link(T);
 		Link(T, Link<T>*);
