@@ -1,4 +1,5 @@
 Analisis de complejidad - Jess Ugalde Reséndiz
+
 Actividad: Act 2.2 - Verificación de las funcionalidades de una estructura de datos lineal
 
 Función add: Es de orden O(n), lineal, esto debido a que solo sigue una serie de instrucciones que pasa a tomar acciónes por medio de condicionales dependiendo de la condición de la lista existente.
