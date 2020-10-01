@@ -1,4 +1,4 @@
-Analisis de complejidad - Jess Ugalde Reséndiz
+Analisis de complejidad - Jesús Ugalde Reséndiz
 
 Actividad: Act 2.2 - Verificación de las funcionalidades de una estructura de datos lineal
 
