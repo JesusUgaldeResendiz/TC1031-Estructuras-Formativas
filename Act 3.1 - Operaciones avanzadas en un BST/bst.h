@@ -1,8 +1,8 @@
 /*
- * bst.h
- *
- *  Created on: 30/10/2015
- *      Author: clase
+ *  Archivo: bst.h
+ *  Creado el: 14/10/2020
+ *  Autor: Jesús Ugalde Reséndiz
+ *  Materia: TC1031
  */
 
 #ifndef BST_H_
