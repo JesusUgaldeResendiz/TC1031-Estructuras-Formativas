@@ -5,8 +5,8 @@
  *  Materia: TC1031
  */
 
-#ifndef BST_H_
-#define BST_H_
+#ifndef BST_H_INCLUDED
+#define BST_H_INCLUDED
 
 #include <string>
 #include <sstream>
@@ -452,4 +452,4 @@ std::string BST<T>::visit() {
 }
 
 
-#endif /* BST_H_ */
+#endif /* BST_H_INCLUDED */
