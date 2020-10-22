@@ -34,6 +34,7 @@ public:
 
   Node (T);
   Node (T, Node<T>*, Node<T>*, Node<T>*); 
+	
   Node<T>* add(T);
   Node<T>* find(T);
   Node<T>* remove(T);
@@ -43,6 +44,7 @@ public:
   void preorder(stringstream&);
   Node<T>* splay(Node<T>*, Node<T>*);
 
+	
   friend class SplayTree<T>;
 };
 
@@ -367,13 +369,15 @@ private:
 public:
   SplayTree();
   bool empty();
+	
   void add(T);
   bool find (T);
   void remove (T);
   string inorder();
+  int size();
+	
   string print_tree();
   string preorder();
-  int size();
 };
 
 template <class T>
