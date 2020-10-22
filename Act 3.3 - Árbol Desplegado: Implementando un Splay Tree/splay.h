@@ -1,55 +1,51 @@
 /*
- * Archivo: splay.h
+ *  Archivo: splay.h
  *  Creado el: 21/10/2020
  *  Autor: Jesùs Ugalde Reséndiz
  *  Matería: TC1031
  *
  */
 
-#ifndef SPLAY_H_INCLUDED
-#define SPLAY_H_INCLUDED
+#ifndef SPLAY_H
+#define SPLAY_H
 
 #include <sstream>
 #include <iostream>
-#include <string>
+using namespace std;
 
 template <class T> class SplayTree;
 
-using namespace std;
 
-template <class T>
-class Node 
-{
+template <class T> class Nodo {
+
+
+public:
+
+  Nodo (T);
+  Nodo (T, Nodo<T>*, Nodo<T>*, Nodo<T>*); 
+  Nodo<T>* find(T);
+  Nodo<T>* add(T);
+  Nodo<T>* remove(T);
+  
+  
+  void preorder(stringstream&) const;
+  void inorder(stringstream&) const;
+  void removeChilds();
+  void print_tree(stringstream&) const;
+  
+
+  Nodo<T>* splay(Nodo<T>*, Nodo<T>*);
 
 private:
-
-  T value;
+    T value;
   Node *left, *right, *parent;
 
   Node<T>* succesor();
   Node<T>* rot_right(Node<T>*);
   Node<T>* rot_left(Node<T>*);
 
-public:
-
-  Node (T);
-  Node (T, Node<T>*, Node<T>*, Node<T>*); 
-	
-  Node<T>* add(T);
-  Node<T>* find(T);
-  Node<T>* remove(T);
-  void removeChilds();
-  void inorder(stringstream&);
-  void print_tree(stringstream&);
-  void preorder(stringstream&);
-  Node<T>* splay(Node<T>*, Node<T>*);
-
-	
   friend class SplayTree<T>;
 };
-
-template <class T>
-Node<T>::Node(T val) : value(val), left(0), right(0), parent(0) {}
 
 template <class T>
 Node<T>::Node(T val, Node<T> *le, Node<T> *ri, Node<T> *p) : value(val), left(le), right(ri), parent(p) {}
@@ -130,6 +126,7 @@ Node<T>* Node<T>::succesor()
 	c->right = 0;
 	return c;
 }
+
 
 template <class T>
 Node<T>* Node<T>::remove(T val) 
@@ -234,6 +231,40 @@ Node<T>* Node<T>::rot_left(Node<T>* x)
 }
 
 template <class T>
+void Node<T>::inorder(stringstream &aux) 
+{
+  if (left != 0) 
+  {
+    left->inorder(aux);
+  }
+  if (aux.tellp() != 1) 
+  {
+    aux << " ";
+  }
+  aux << value;
+  if (right != 0) 
+  {
+    right->inorder(aux);
+  }
+}
+
+template <class T>
+void Node<T>::preorder(stringstream &aux)
+{
+	aux << value;
+	if (left != 0) 
+	{
+		aux << " ";
+		left->preorder(aux);
+	}
+	if (right != 0) 
+	{
+		aux << " ";
+		right->preorder(aux);
+	}
+}
+
+template <class T>
 Node<T>* Node<T>::find(T val) 
 {
   if (val == value)
@@ -254,6 +285,7 @@ Node<T>* Node<T>::find(T val)
   }
   return 0;
 }
+
 
 template <class T>
 Node<T>* Node<T>::splay(Node<T>* root,Node<T>* x) 
@@ -301,106 +333,62 @@ Node<T>* Node<T>::splay(Node<T>* root,Node<T>* x)
 }
 
 
-template <class T>
-void Node<T>::inorder(stringstream &aux) 
-{
-  if (left != 0) 
-  {
-    left->inorder(aux);
-  }
-  if (aux.tellp() != 1) 
-  {
-    aux << " ";
-  }
-  aux << value;
-  if (right != 0) 
-  {
-    right->inorder(aux);
-  }
-}
-template <class T>
-void Node<T>::print_tree(stringstream &aux) 
-{
-  if (parent != 0) 
-  {
-    aux << "\n node " << value;
-    aux << " parent " << parent->value;
-  } else
-    aux << "\n root " << value;
-  if (left != 0)
-    aux << " left " << left->value;
-  if (right != 0)
-    aux << " right " << right->value;
-  aux << "\n";
 
-  if (left != 0) 
-  {
-    left->print_tree(aux);
-  }
-  if (right != 0) 
-  {
-    right->print_tree(aux);
-  }
-}
 
-template <class T>
-void Node<T>::preorder(stringstream &aux)
-{
-	aux << value;
-	if (left != 0) 
-	{
-		aux << " ";
-		left->preorder(aux);
-	}
-	if (right != 0) 
-	{
-		aux << " ";
-		right->preorder(aux);
-	}
-}
+template <class T> class SplayTree {
 
-template <class T>
-class SplayTree 
-{
-
-private:
-  Node<T> *root;
 
 public:
   SplayTree();
-  bool empty();
-	
-  void add(T);
-  bool find (T);
-  void remove (T);
+  
   string inorder();
-  int size();
-	
   string print_tree();
   string preorder();
+  
+  bool find (T);
+  bool empty();
+  void add(T);
+  int size();
+  void remove (T);
+
+private:
+  Nodo<T> *root;
+
 };
 
-template <class T>
-SplayTree<T>::SplayTree() : root(0) {}
+template <class T> SplayTree<T>::SplayTree()  {
 
-template <class T>
-bool SplayTree<T>::empty() 
-{
-  return (root == 0);
+  root = 0;
+}
+
+template <class T> bool SplayTree<T>::empty() const {
+  
+  if (root == 0 ) return true ;
+  else return false;
+}
+ 
+template <class T> void SplayTree<T>::add(T val) {
+  if ( root != 0) {
+    Nodo<T>* added = root->add(val);
+    root = root->splay(root,added);
+  } 
+  else     root = new Nodo<T>(val);
+  
+}
+template <class T> string SplayTree<T>::preorder() const {
+  stringstream aux;
+
+  aux << "[";
+  if (!empty()) {
+    root->preorder(aux);
+  }
+  aux << "]";
+  return aux.str();
 }
 
 template <class T>
-void SplayTree<T>::add(T val) 
-{
-  if ( root != 0) 
-  {
-    Node<T>* added = root->add(val);
-    root = root->splay(root,added);
-  } 
-  else 
-  {
-    root = new Node<T>(val);
-  }
+int SplayTree<T>::size(){
+	return 0;
 }
 
 template <class T>
@@ -431,30 +419,25 @@ void SplayTree<T>::remove(T val)
   }
 }
 
-template <class T>
-bool SplayTree<T>::find(T val) 
-{
-  return true;
+template <class T> bool SplayTree<T>::find(T val) {
+  if (root != 0) {
+    Nodo<T>* found = root->find(val);
+    root = root->splay(root,found);
+    return (root->value == val);
+  } else {
+    return false;
+  }
 }
 
-template <class T>
-string SplayTree<T>::preorder()
-{
+template <class T> string SplayTree<T>::inorder() const {
   stringstream aux;
 
   aux << "[";
-  if (!empty()) 
-  {
-    root->preorder(aux);
+  if (!empty()) {
+    root->inorder(aux);
   }
   aux << "]";
   return aux.str();
-}
-
-template <class T>
-int SplayTree<T>::size()
-{
-	return 0;
 }
 
 #endif /*SPLAY__H_INCLUDED*/
