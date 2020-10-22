@@ -1,6 +1,6 @@
 /*
  *  Archivo: splay.h
- *  Creado el: 21/10/2020
+ *  Creado el: 20/10/2020
  *  Autor: Jesùs Ugalde Reséndiz
  *  Matería: TC1031
  *
@@ -31,9 +31,11 @@ public:
 
   Node (T);
   Node (T, Node<T>*, Node<T>*, Node<T>*); 
+	
   Node<T>* add(T);
   Node<T>* find(T);
   Node<T>* remove(T);
+	
   void removeChilds();
   void inorder(stringstream&) const;
   void print_tree(stringstream&) const;
@@ -309,14 +311,16 @@ private:
 
 public:
   SplayTree();
+	
   bool empty() const;
   void add(T);
   bool find (T);
   void remove (T);
+  int size();
+	
   string inorder() const;
   string print_tree() const;
   string preorder() const;
-  int size();
 };
 
 template <class T>
