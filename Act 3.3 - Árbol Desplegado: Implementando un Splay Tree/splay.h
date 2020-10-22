@@ -1,8 +1,8 @@
 /*
  * Archivo: splay.h
  *  Creado el: 21/10/2020
- *  Autor: Jesùs Ugalde Reséndiz
- *  Matería: TC1031
+ *  Autor: JesÃ¹s Ugalde ResÃ©ndiz
+ *  MaterÃ­a: TC1031
  *
  */
 
@@ -430,42 +430,7 @@ void SplayTree<T>::remove(T val)
 template <class T>
 bool SplayTree<T>::find(T val) 
 {
-  if (root != 0) 
-  {
-    Node<T>* found = root->find(val);
-    root = root->splay(root,found);
-    return (root->value == val);
-  } else 
-  {
-    return false;
-  }
-}
-
-template <class T>
-string SplayTree<T>::inorder() 
-{
-  stringstream aux;
-
-  aux << "[";
-  if (!empty()) {
-    root->inorder(aux);
-  }
-  aux << "]";
-  return aux.str();
-}
-
-template <class T>
-string SplayTree<T>::print_tree()
-{
-  stringstream aux;
-
-  aux << "\n ===================== ";
-  if (!empty()) 
-  {
-    root->print_tree(aux);
-  }
-  aux << " ======================= \n";
-  return aux.str();
+  return true;
 }
 
 template <class T>
