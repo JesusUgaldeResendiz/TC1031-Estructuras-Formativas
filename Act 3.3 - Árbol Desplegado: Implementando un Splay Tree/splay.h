@@ -340,25 +340,7 @@ void SplayTree<T>::add(T val) {
 
 template <class T>
 void SplayTree<T>::remove(T val) {
-  if (root != 0) {
-    if (val == root->value) {
-      Node<T> *succ = root->succesor();
-      if (succ != 0) {
-        succ->left = root->left;
-        succ->right = root->right;
-        succ->parent = 0;
-        if (succ->left)
-          succ->left->parent = succ;
-        if (succ->right)
-          succ->right->parent = succ;
-      }
-      delete root;
-      root = succ;
-    } else {
-      Node<T>* p = root->remove(val);
-      root = root->splay(root,p);
-    }
-  }
+  
 }
 
 template <class T>
