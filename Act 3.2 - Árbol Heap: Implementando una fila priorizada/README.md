@@ -1,6 +1,7 @@
-Analisis de complejidad Jesús Ugalde Reséndiz A01706340
+Analisis de complejidad - Jesús Ugalde Reséndiz A01706340
 
-ACT 3.2 - ÁRBOL HEAP: IMPLEMENTANDO UNA FILA PRIORIZADA
+Act 3.2 - Árbol Heap: Implementando una fila priorizada
+
 
 Función push: Esta función es de orden O(log(n)) debido a que esta recorre la lista por medio de un while con ayuda de parent el cual es su auxiliar para poder revisar en la posicion donde va a insertarse un nuevo elemento, no obstate tomando eso como punto de partida y que parent divide la posición para agilizar la inserción podemos entonces ahora si decir que gracias a la manera en que parent agiliza el metodo para hacerlo en menos pasos tiende a ser O(log(n))
 
